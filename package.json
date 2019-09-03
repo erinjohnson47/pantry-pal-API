@@ -1,0 +1,29 @@
+{
+  "name": "pantry-pal-api",
+  "version": "1.0.0",
+  "description": "backend API to react-pantry-pal repository the frontend is located [here](https://github.com/erinjohnson47/pantry-pal)",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "mongoose": "^5.6.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erinjohnson47/pantry-pal-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erinjohnson47/pantry-pal-API/issues"
+  },
+  "homepage": "https://github.com/erinjohnson47/pantry-pal-API#readme"
+}

@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost/pantry', {
 })
 
 mongoose.connection.on('connect', () => {
-    console.log('Mongoose is connected')
+    console.log('Hello, Mongoose is connected')
 })
 
 mongoose.connection.on('error', (err) => {

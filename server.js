@@ -23,6 +23,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+const userController = require('./controllers/userController');
+
+app.use('/user', userController)
+
 app.listen(process.env.PORT || 9000, () => {
     console.log('listening on port 9000')
 })
