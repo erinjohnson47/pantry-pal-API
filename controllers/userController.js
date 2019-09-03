@@ -29,5 +29,39 @@ router.post('/register', async (req, res) => {
     }
 })
 
+router.post('/login', async (req, res) => {
+    const foundUser = await User.findOne({username: req.body.username})
+    console.log(foundUser, 'foundUser')
+    if (foundUser) {
+        if(bcrypt.compareSync(req.body.password, foundUser.password)) {
+            req.session.userId = foundUser._id;
+            req.session.username = foundUser.username;
+            req.session.logged = true;
+            
+            res.json({
+                status: {
+                    code: 200,
+                    message: "User is logged in"
+                }
+            })
+        } else {
+            res.json({
+                status: {
+                    code: 200,
+                    message: "Username or password is incorrect"
+                }
+            })
+        }
+    } else {
+        res.json({
+            status: {
+                code: 200,
+                message: "Username or password is incorrect"
+            }
+        })
+    }
+    
+})
+
 
 module.exports = router;
