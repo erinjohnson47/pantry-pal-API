@@ -20,4 +20,21 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.get('/', async (req, res) => {
+    try {
+        const foundPantryItems = await Pantry.find();
+        res.json({
+            status: {
+                code: 200,
+                message: 'Resources returned successfully'
+            },
+            data: foundPantryItems
+        })
+        console.log(foundPantryItems, '<-foundPantryItems in get route')
+    } catch (err) {
+        console.log(err)
+        res.send(err);
+    }
+})
+
 module.exports = router;
