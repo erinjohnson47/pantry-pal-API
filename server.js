@@ -24,8 +24,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const userController = require('./controllers/userController');
+const pantryController = require('./controllers/pantryController')
 
-app.use('/user', userController)
+app.use('/user', userController);
+app.use('/pantry', pantryController);
 
 app.listen(process.env.PORT || 9000, () => {
     console.log('listening on port 9000')
