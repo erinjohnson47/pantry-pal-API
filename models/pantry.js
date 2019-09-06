@@ -6,11 +6,12 @@ const PantrySchema = new mongoose.Schema({
     expDate: Date,
     quantity: {type: Number, min: 0},
     servings: {type: Number, min: 0},
-    itemOpen: Boolean,
+    isItemOpen: Boolean,
     openedOn: Date,
-    outOfStock: Boolean,
-    shoppingList: Boolean,
-    image: String
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 const Pantry = mongoose.model('Pantry', PantrySchema);

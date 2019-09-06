@@ -1,6 +1,6 @@
 const express   = require('express');
 const router    = express.Router();
-const User      = require('../models/user');
+const User      = require('../models/User');
 const bcrypt    = require('bcryptjs')
 
 router.post('/register', async (req, res) => {
@@ -21,7 +21,8 @@ router.post('/register', async (req, res) => {
             status: {
                 code: 200,
                 message: "User is logged in"
-            }
+            }, 
+            data: req.session
         })
     } catch (err) {
         console.log(err)
@@ -42,14 +43,16 @@ router.post('/login', async (req, res) => {
                 status: {
                     code: 200,
                     message: "User is logged in"
-                }
+                }, 
+                data: req.session
             })
         } else {
             res.json({
                 status: {
                     code: 200,
                     message: "Username or password is incorrect"
-                }
+                }, 
+                data: req.session
             })
         }
     } else {
