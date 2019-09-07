@@ -1,11 +1,14 @@
 const express   = require('express');
 const router    = express.Router();
 const Pantry    = require('../models/Pantry');
+const User      = require('../models/User')
 
 router.post('/', async (req, res) => {
     try {
-        console.log(req.body, 'req.body in createPantry')
         const createPantryItem = await Pantry.create(req.body);
+        const user = await User.findById(req.session.userId);
+        createPantryItem.user = user.id;
+        createPantryItem.save();
         res.json({
             status: {
                 code: 201,
