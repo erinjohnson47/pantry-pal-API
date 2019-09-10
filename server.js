@@ -4,6 +4,7 @@ const bodyParser    = require('body-parser');
 const cors          = require('cors');
 const session       = require('express-session');
 
+require('dotenv').config()
 require('./db/db')
 
 app.use(session({
@@ -30,5 +31,5 @@ app.use('/user', userController);
 app.use('/pantry', pantryController);
 
 app.listen(process.env.PORT || 9000, () => {
-    console.log('listening on port 9000')
+    console.log(`listening on ${process.env.PORT}`)
 })
