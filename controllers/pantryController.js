@@ -1,6 +1,6 @@
 const express   = require('express');
 const router    = express.Router();
-const Pantry    = require('../models/Pantry');
+const Pantry    = require('../models/pantry');
 const User      = require('../models/User')
 
 router.post('/', async (req, res) => {
