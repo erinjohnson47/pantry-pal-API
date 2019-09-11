@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://my-pantry-pal.herokuapp.com/'],
+    origin: ['http://localhost:3000', 'https://my-pantry-pal.herokuapp.com'],
     credentials: true, 
     optionsSuccessStatus: 200 //for older browsers, will choke on a 204
 }
