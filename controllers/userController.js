@@ -11,7 +11,6 @@ router.post('/register', async (req, res) => {
 
     try {
         const createUser = await User.create(req.body);
-        console.log(createUser, '<-createUser in register route')
 
         req.session.userId = createUser._id;
         req.session.username = createUser.username;
@@ -32,7 +31,6 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const foundUser = await User.findOne({username: req.body.username})
-    console.log(foundUser, 'foundUser')
     if (foundUser) {
         if(bcrypt.compareSync(req.body.password, foundUser.password)) {
             req.session.userId = foundUser._id;
@@ -77,7 +75,6 @@ router.get('/logout', (req, res) => {
                     message: "User logged out"
                 }
             })
-            console.log(`logged out logout route`)
         }
     })
 })

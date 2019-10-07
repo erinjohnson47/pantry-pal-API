@@ -22,6 +22,22 @@ router.post('/', async (req, res) => {
         res.send(err);
     }
 })
+router.put('/:id', async (req, res) => {
+    try {
+        const editPantryItem = await Pantry.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        console.log(editPantryItem, 'edit pantry item backend')
+        res.json({
+            status: {
+                code: 201,
+                message: "Resource updated successfully."
+            },
+            data: editPantryItem
+        })
+    } catch(err) {
+        console.log(err, "err in express put route")
+        res.send(err)
+    }
+})
 router.delete('/:id', async (req, res) => {
     try {
         const deletePantryItem = await Pantry.findByIdAndDelete(req.params.id);
@@ -42,7 +58,6 @@ router.delete('/:id', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const foundPantryItems = await Pantry.find({user: req.session.userId});
-        console.log(req.session.userId, 'req.session.userId in foundPantryItems get route')
         res.json({
             status: {
                 code: 200,
@@ -50,7 +65,6 @@ router.get('/', async (req, res) => {
             },
             data: foundPantryItems
         })
-        console.log(foundPantryItems, '<-foundPantryItems in get route')
     } catch (err) {
         console.log(err)
         res.send(err);
